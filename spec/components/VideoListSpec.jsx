@@ -22,6 +22,7 @@ describe('VideoList', function() {
     );
 
     var videoList = shallowRenderer.getRenderOutput();
+    console.log('videoList.props.children',videoList.props.children);
     expect(videoList.props.children).to.have.length(1);
     videoList.props.children.forEach(child => expect(child.type).to.equal(VideoListEntry));
   });
@@ -33,7 +34,7 @@ describe('VideoList', function() {
     shallowRenderer.render(
       <VideoList videos={threeFakeVideos} />
     );
-    
+
     var videoList = shallowRenderer.getRenderOutput();
     expect(videoList.props.children).to.have.length(3);
     videoList.props.children.forEach(child => expect(child.type).to.equal(VideoListEntry));
@@ -46,7 +47,7 @@ describe('VideoList', function() {
     shallowRenderer.render(
       <VideoList videos={fiveFakeVideos} />
     );
-    
+
     var videoList = shallowRenderer.getRenderOutput();
     expect(videoList.props.children).to.have.length(5);
     videoList.props.children.forEach(child => expect(child.type).to.equal(VideoListEntry));
