@@ -9,14 +9,15 @@ class App extends React.Component {
 
     this.state = {
       done: false,
-      videoToPlay: ''
+      videoList: exampleVideoData,
+      videoToPlay: exampleVideoData[0]
     };
   }
 
-  onVideoListEntryClick() {
+  onVideoListEntryClick(video) {
+    console.log('video', video);
     this.setState({
-      done: !this.state.done,
-      function() {console.log('test');}
+      videoToPlay: video
     });
 
   }
@@ -35,7 +36,7 @@ class App extends React.Component {
             <div><h5><em>videoPlayer</em><VideoPlayer video={this.state.videoToPlay} /></h5></div>
           </div>
           <div className="col-md-5">
-            <div><h5><em>videoList</em><VideoList videos={exampleVideoData} /></h5></div>
+            <div><h5><em>videoList</em><VideoList videos={this.state.videoList} onVideoListEntryClick={this.onVideoListEntryClick.bind(this)}/></h5></div>
           </div>
         </div>
       </div>
