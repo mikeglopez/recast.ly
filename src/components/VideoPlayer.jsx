@@ -1,3 +1,4 @@
+// include onVideoListEntryClick' on line 8?
 var VideoPlayer = (props) => (
   <div className="video-player">
     <div className="embed-responsive embed-responsive-16by9">

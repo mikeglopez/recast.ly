@@ -1,22 +1,27 @@
 import VideoList from './VideoList.js';
 import exampleVideoData from '../data/exampleVideoData.js';
 import VideoPlayer from './VideoPlayer.js';
+import VideoListEntry from './VideoListEntry.js';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      done: false
+      done: false,
+      videoToPlay: ''
     };
   }
 
   onVideoListEntryClick() {
     this.setState({
-      done: !this.state.done
+      done: !this.state.done,
+      function() {console.log('test');}
     });
+
   }
 
+  // on line 32, video should be set to this.state.videoToPlay
   render() {
     return (
       <div>
@@ -27,7 +32,7 @@ class App extends React.Component {
         </nav>
         <div className="row">
           <div className="col-md-7">
-            <div><h5><em>videoPlayer</em><VideoPlayer video={exampleVideoData[1]} /></h5></div>
+            <div><h5><em>videoPlayer</em><VideoPlayer video={this.state.videoToPlay} /></h5></div>
           </div>
           <div className="col-md-5">
             <div><h5><em>videoList</em><VideoList videos={exampleVideoData} /></h5></div>

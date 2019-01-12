@@ -1,12 +1,21 @@
 import VideoListEntry from './VideoListEntry.js';
+import App from './App.js';
 
-var VideoList = (props) => (
-  <div className="video-list">
-    {props.videos.map(video =>
-      <VideoListEntry video={video} />
-    )}
-  </div>
-);
+class VideoList extends App {
+  constructor (props) {
+    super(props);
+  }
+
+  render () {
+    return (
+      <div className="video-list">
+        {this.props.videos.map(video =>
+          <VideoListEntry video={video} />
+        )}
+      </div>
+    );
+  }
+}
 
 // PropTypes tell other developers what `props` a component expects
 // Warnings will be shown in the console when the defined rules are violated
