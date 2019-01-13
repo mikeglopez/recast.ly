@@ -47,12 +47,14 @@ class App extends React.Component {
     this.setState({
       value: event.target.value
     });
-    var options = {
-      query: this.state.value,
+
+    var cb = this.assignState.bind(this);
+    // render initial list of videos
+    _.debounce(this.props.searchYouTube({
+      query: event.target.value,
       max: 5,
       key: YOUTUBE_API_KEY
-    };
-    this.props.searchYouTube(options, function (item) { console.log('item', item); });
+    }, cb), 500);
   }
 
 
@@ -62,7 +64,7 @@ class App extends React.Component {
       <div>
         <nav className="navbar">
           <div className="col-md-6 offset-md-3">
-            <div><h5><em>search</em><Search value={this.state.value} onSearchType={this.onSearchType.bind(this)} /></h5></div>
+            <div><h5><em>search</em><Search value={this.state.value} onSearchType={this.onSearchType.bind(this) } /></h5></div>
           </div>
         </nav>
         <div className="row">
